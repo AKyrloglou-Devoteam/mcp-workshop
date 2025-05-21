@@ -1,0 +1,11 @@
+item_name,category,cost,description,stock_quantity,rating,supplier_id
+"Wireless Mouse","Electronics",25.99,"Ergonomic wireless mouse with 5 buttons and adjustable DPI. Long battery life.","150",4.5,"SUPPL_ELEC_001"
+"Python for Beginners","Books",19.50,"A comprehensive guide to learning Python programming from scratch. Includes examples and exercises.","85",4.8,"SUPPL_BOOK_007"
+"Coffee Maker","Home Goods",79.00,"12-cup programmable coffee maker with auto-shutoff and permanent filter.","60",4.2,"SUPPL_HOME_003"
+"Bluetooth Speaker","Electronics",45.75,"Portable waterproof Bluetooth speaker with 10-hour playtime and rich bass.","200",4.6,"SUPPL_ELEC_002"
+"The Sci-Fi Anthology","Books",22.00,"A collection of classic and modern science fiction short stories from various authors.","40",4.9,"SUPPL_BOOK_007"
+"LED Desk Lamp","Home Goods",32.50,"Modern LED desk lamp with adjustable brightness, color temperature, and USB charging port.","110",4.3,"SUPPL_HOME_004"
+"Gaming Keyboard","Electronics",120.00,"Mechanical gaming keyboard with RGB backlighting and programmable macro keys.","75",4.7,"SUPPL_ELEC_001"
+"Gardening Tools Set","Home Goods",55.25,"7-piece stainless steel gardening tool set with ergonomic handles and carrying case.","90",4.4,"SUPPL_HOME_003"
+"Data Structures in C++","Books",28.90,"In-depth coverage of fundamental data structures and algorithms using C++.","30",4.7,"SUPPL_BOOK_009"
+"Smartwatch","Electronics",199.99,"Feature-rich smartwatch with heart rate monitor, GPS, and multiple sport modes.","120",4.1,"SUPPL_ELEC_002"

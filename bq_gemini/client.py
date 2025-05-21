@@ -1,7 +1,7 @@
 import asyncio
 from fastmcp import Client
 
-ws_url = "http://localhost:9003/mcp"
+ws_url = "http://localhost:8003/mcp"
 client = Client(ws_url)
 
 async def main():
@@ -19,21 +19,15 @@ async def main():
             print(f"Could not list tools: {e}")
             return
 
-        user_question = "What is the most expencive item available?"#"What can you tell me about the items in the knowledge base?"
-        # For a more specific question, it would depend on the content of BIGQUERY_TABLE_ID
-        # e.g., if it's Shakespeare data: "What are the themes in Hamlet's speeches?"
+        user_question = "What is the cheapest item available?"#"What can you tell me about the items in the knowledge base?"
 
         print(f"\nAsking question: '{user_question}'")
         
         try:
-            # Tool name is derived from the function name by default
-            # e.g., answer_question_with_bigquery_context
             response = await client.call_tool(tools[0].name, arguments={"user_question": user_question})
             
-            # The response from client.tools.tool_name(...) is directly the tool's return value
-            # if it's a simple string. If it's a complex MCPMessage, you might need response.text
             print("\n--- Gemini's Answer ---")
-            print(response[0].text) # Assuming the tool returns a string
+            print(response[0].text)
             print("----------------------")
 
         except AttributeError:

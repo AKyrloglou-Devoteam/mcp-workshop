@@ -1,25 +1,24 @@
 import os
-import asyncio
 from fastmcp import FastMCP, Context
-from fastmcp.prompts.prompt import Message
 from google.cloud import bigquery
 import vertexai
-from vertexai.generative_models import GenerativeModel, Part, HarmCategory, HarmBlockThreshold
+from google.oauth2 import service_account
+from vertexai.generative_models import GenerativeModel, HarmCategory, HarmBlockThreshold
 
 from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
 
 # --- Configuration ---
-# These should be configured by participants or via environment variables
-GCP_PROJECT_ID = "bigquery-101-401711" # os.environ.get("GCP_PROJECT", "bigquery-101-401711")
-GCP_LOCATION = "us-west1" # os.environ.get("GCP_LOCATION", "us-west1")
-BIGQUERY_TABLE_ID = f"{GCP_PROJECT_ID}.mcp.catalog" # os.environ.get("BIGQUERY_TABLE_ID", f"{GCP_PROJECT_ID}.mcp.hacker_news")
+GCP_PROJECT_ID = os.environ.get("GCP_PROJECT", "delta-cosmos-460512-n8")
+GCP_LOCATION = os.environ.get("GCP_LOCATION", "europe-west1")
+BIGQUERY_TABLE_ID = os.environ.get("BIGQUERY_TABLE_ID", f"{GCP_PROJECT_ID}.mcp_workshop.catalog")
 GEMINI_MODEL_ID = "gemini-2.0-flash" 
-
+PORT = 8003
 
 # --- Initialize Vertex AI (once) ---
 try:
-    vertexai.init(project=GCP_PROJECT_ID, location=GCP_LOCATION)
+    credentials = service_account.Credentials.from_service_account_file("sa-key.json")
+    vertexai.init(project=GCP_PROJECT_ID, location=GCP_LOCATION, credentials=credentials)
 except Exception as e:
     print(f"Warning: Vertex AI failed to initialize. Ensure GCP_PROJECT and GCP_LOCATION are set. Error: {e}")
 
@@ -29,7 +28,7 @@ mcp = FastMCP(name="BigQueryGeminiWorkshopAgent")
 # --- Helper Functions ---
 def get_bigquery_client():
     try:
-        client = bigquery.Client(project=GCP_PROJECT_ID)
+        client = bigquery.Client(project=GCP_PROJECT_ID, credentials=credentials)
         return client
     except Exception as e:
         print(f"Error initializing BigQuery client: {e}")
@@ -44,10 +43,6 @@ def fetch_data_from_bigquery_table(bq_client: bigquery.Client, table_id: str, ct
         ctx.error("BigQuery client not available in fetch_data_from_bigquery_table.")
         return "Error: BigQuery client not initialized."
     
-    # Simplified query for the workshop - reads specific columns from the predefined table
-    # Example: SELECT product_name, description FROM `your-project.your_dataset.your_table` LIMIT 5
-    # Participants would adapt this to their workshop table schema.
-    # For this generic example, let's assume a table with 'item_name' and 'item_description'.
     query = f"""
         SELECT 
             item_name,
@@ -158,7 +153,6 @@ async def answer_question_with_bigquery_context(user_question: str, ctx: Context
         return "Error: BigQuery client could not be initialized."
 
     # 1. Fetch context from BigQuery
-    # BIGQUERY_TABLE_ID is a global config for this workshop example
     bq_context_data = fetch_data_from_bigquery_table(bq_client, BIGQUERY_TABLE_ID, ctx)
     if "Error:" in bq_context_data or "No relevant data" in bq_context_data:
         return bq_context_data # Return error or no data message
@@ -183,6 +177,6 @@ http_app = mcp.http_app(middleware=custom_middleware)
 if __name__ == "__main__":
     mcp.run(transport="streamable-http",
         host="127.0.0.1",
-        port=9003,
+        port=PORT,
         log_level="debug"
     )

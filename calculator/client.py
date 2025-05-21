@@ -3,11 +3,12 @@ from fastmcp import Client
 from server import mcp 
 
 # Configuration - should match where the server is running
-# MCP_SERVER_URL = "http://localhost:8000" # Assumes server runs on port 8000
+ws_url = "http://localhost:8000/mcp"
+client = Client(ws_url)
 
 async def main():
 
-    async with Client(mcp) as client:
+    async with Client(ws_url) as client:
         
         # Test calculate tool - Addition
         print("\nTesting ADDITION:")

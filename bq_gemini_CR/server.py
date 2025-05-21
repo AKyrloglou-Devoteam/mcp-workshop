@@ -1,12 +1,8 @@
 import os
-import asyncio
 from fastmcp import FastMCP, Context
 from google.cloud import bigquery
 import vertexai
-from vertexai.generative_models import GenerativeModel, Part, HarmCategory, HarmBlockThreshold
-
-from starlette.middleware import Middleware
-from starlette.middleware.cors import CORSMiddleware
+from vertexai.generative_models import GenerativeModel, HarmCategory, HarmBlockThreshold
 
 # --- Configuration ---
 # These should be configured by participants or via environment variables
@@ -167,19 +163,3 @@ async def answer_question_with_bigquery_context(user_question: str, ctx: Context
     gemini_answer = await call_gemini_model_async(final_prompt, ctx)
     
     return gemini_answer
-
-# --- CORS Middleware and ASGI App Setup ---
-custom_middleware = [
-    Middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"]),
-]
-
-# The http_app method creates an ASGI application.
-# Pass the middleware list to it.
-http_app = mcp.http_app(middleware=custom_middleware)
-
-# if __name__ == "__main__":
-#     mcp.run(transport="streamable-http",
-#         host="127.0.0.1",
-#         port=9003,
-#         log_level="debug"
-#     )

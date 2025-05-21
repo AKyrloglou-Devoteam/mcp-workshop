@@ -1,6 +1,9 @@
 from fastmcp import FastMCP, Context
 from typing import Union
 
+from starlette.middleware import Middleware
+from starlette.middleware.cors import CORSMiddleware
+
 # --- fastMCP Server Setup ---
 mcp = FastMCP(name="CalculatorWorkshopAgent")
 
@@ -46,20 +49,18 @@ def ping(ctx: Context) -> str:
     ctx.info("Ping tool called.")
     return "pong"
 
-# # --- CORS Middleware and ASGI App Setup ---
-# cors_middleware = Middleware(
-#     CORSMiddleware,
-#     allow_origins=["*"],  # Restrict in production!
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
+# --- CORS Middleware and ASGI App Setup ---
+custom_middleware = [
+    Middleware(CORSMiddleware, allow_origins=["*"]),
+]
 
-# http_app = mcp.http_app(middleware=[cors_middleware])
+# The http_app method creates an ASGI application.
+# Pass the middleware list to it.
+http_app = mcp.http_app(middleware=custom_middleware)
 
-# # --- Run with Uvicorn (for local development) ---
-# if __name__ == "__main__":
-#     import uvicorn
-#     port = int(os.environ.get("PORT", 8000)) # Changed default to 8000 for clarity
-#     print(f"Starting Calculator fastMCP server with Uvicorn on http://0.0.0.0:{port}")
-#     uvicorn.run(http_app, host="0.0.0.0", port=port, log_level="info")
+if __name__ == "__main__":
+    mcp.run(transport="streamable-http",
+        host="127.0.0.1",
+        port=8000,
+        log_level="debug"
+    )

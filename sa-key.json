@@ -1,0 +1,13 @@
+// {
+//   "type": "service_account",
+//   "project_id": "delta-cosmos-460512-n8",
+//   "private_key_id": "ca115b551f53465719d3d33fcc04db9e79c9d39f",
+//   "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDG02uaWWF8W9ac\n0iax5kJjjshpU/s+NptjXVBL+aVt4Pzn+pNIT2c3tOloH1bZZpXje4cBAhJ+uy4P\nsPFnI4Zxd0XSLyfDDRPqb4uPr0Nlghit915ODMqmSOv2kAANEfGcxMfiFeFNmytH\n3Mt+ZkDc5gJRwl+ZUbvNqdp/PgHRsQic7z40bv+dZBA8XwerbYaOyIw4edCjVgRl\ncr1i3yG31qN5Yf9/zA9BNriXeVuFD1Scl5MExWJBk3VzJlyXtQphiOiY1ssUtsWo\nQIhUPUGQBuH4YZIZ35iAtcMHZwmyaaGrsZKzvILkk/tAI18LPpVyU3ff1V7dgb6h\norxqDAx9AgMBAAECggEANt9MeBmo3PBfp4IcKcbZla5nQyJpWX8qnV64dW9dp5iL\nU96E3VUEsIweSp0zk+ZLAbAqzy1qO02fZbc4uHVGenQncd2PxLYMRAwq4SnGmPIx\nq3l0rme7We8QKEkPqovEObbZT10ohAmKBVg7VRQVXKGiDDxvs9mp0hXJdop/aAZO\nSH3TVFxpwtJGGFLO/FQMi9tCEDF8pxfM5GCUNhcJarHTd7dwirVAeuCX88Cfbuxr\nMdwK5KfAVIKBJmAYA9eT0HpuTuOB4w92Q4HG/f1tcABNG5GvtWR81KWJjR053eV/\n9r3FAWdQnmpjen/KWScE6qPQEu6C5/WL0OlPoMGURQKBgQDjgvTfdLeC8cKxWTxq\n3Oj3z99IDtjnA8S//BhvJoHcXlO6IcsfvrChtM3Yk+W2qrceuZcSAeNO6zZHRiNu\nL2I5tSWUsDmnYRqEJy2X+Jg+n6/xD1isRiWU2cv5wXzO16ejHgDakPwt+MWIhPAr\nA1y36s+N+KygUeDyGUaZkCUSWwKBgQDfuOx83ZW+GaW+0DaCJzSBYslr25AAPz6N\ndPPEXkJbedIy5+5lxlGT50pOI8+cbHTbK8cLAEUKCNwsVmhsOL6Aj+D1xGH3Lgkx\ndEdCK5nAzl/JIDHwnHQFP95GwGe7ZdBVihW5drio+GOaQBJ7Vqg+hB9IvLQehAkH\n4yQCNidkBwKBgQDR/o8dLfMwhwvIfHBaxpq2GYWjUij8WishdYPsHCPjDqHDfOuq\n2mzYZTVWwXRXPY2Wa4E4Wsu/jTVlZiTP0Cae00fjzSD6EJPUBQF9czS7INPZ8etL\n39dSZBF07xXPKZiO4+Ov2gEaQbO6BdJUMV9EVxTKmwxjUhAKBjB3D2hYXwKBgC4q\npwKNZ103RbC+nsD0/izFCfOr92dVpb7jJ3qaSO8/kFTY76Uo66St0fOWCD2rU+H2\ngriOcbDEa0rq+dl7TDSTfES7JcwwP81oxVuuS6gx7io+7o9MedSrfV70TXOqavd7\n60e+bBTSTRuDpUy2cTmVYi9MYY76iDKMeN3L9wz5AoGBAMO4V+9cnuYCSJlBfAX4\nCtpdpEzeaNDy+zSK8IKv8SzVyTXxOHbNTaIzpM4YNI6I50GM60bd4PAbjzM9eCK3\nNrYSu3TGBaRISgsmPtZrShsNuwAwZK49b+GK6Wp0t+BHX2ZAQlTr6S4s5sBe2DiA\nXB4tBfm4loEL/EI2gmcqmjsb\n-----END PRIVATE KEY-----\n",
+//   "client_email": "sa-workshop@delta-cosmos-460512-n8.iam.gserviceaccount.com",
+//   "client_id": "102628132757111963719",
+//   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+//   "token_uri": "https://oauth2.googleapis.com/token",
+//   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+//   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sa-workshop%40delta-cosmos-460512-n8.iam.gserviceaccount.com",
+//   "universe_domain": "googleapis.com"
+// }
